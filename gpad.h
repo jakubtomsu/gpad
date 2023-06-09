@@ -3,7 +3,7 @@
 
 #include <stdint.h>
 
-#define GPAD_MAX_DEVICES 8
+#define GPAD_MAX_DEVICES 4
 
 typedef uint8_t Gpad_Button;
 typedef uint8_t Gpad_Axis;
@@ -70,6 +70,7 @@ bool gpad_controller(Gpad_Id id, Gpad_Controller* result);
 
 #include <Windows.h>
 #include <dinput.h>
+#include <Xinput.h>
 
 #pragma comment(lib, "dinput8.lib")
 #pragma comment(lib, "dxguid.lib")
@@ -142,6 +143,37 @@ void gpad_initialize(void) {
 				printf("\n");
 			}
 		}
+
+    for (int i = 0; i < XUSER_MAX_COUNT; i++) {
+        XINPUT_STATE state = {0};
+        if (XInputGetState(i, &state) == ERROR_SUCCESS) {
+            printf("Player %d ", i);
+				printf("LX:%6d ", state.Gamepad.sThumbLX);
+				printf("LY:%6d ", state.Gamepad.sThumbLY);
+				printf("RX:%6d ", state.Gamepad.sThumbRX);
+				printf("RY:%6d ", state.Gamepad.sThumbRY);
+				printf("LT:%3u ", state.Gamepad.bLeftTrigger);
+				printf("RT:%3u ", state.Gamepad.bRightTrigger);
+				printf("Buttons: ");
+				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_UP)        printf("up ");
+				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_DOWN)      printf("down ");
+				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT)      printf("left ");
+				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT)     printf("right ");
+				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_START)          printf("start ");
+				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_BACK)           printf("back ");
+				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_LEFT_THUMB)     printf("LS ");
+				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_RIGHT_THUMB)    printf("RS ");
+				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_LEFT_SHOULDER)  printf("LB ");
+				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_RIGHT_SHOULDER) printf("RB ");
+				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_A)              printf("A ");
+				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_B)              printf("B ");
+				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_X)              printf("X ");
+				if (state.Gamepad.wButtons & XINPUT_GAMEPAD_Y)              printf("Y ");
+				printf("\n");
+        } else {
+
+        }
+    }
 }
 
 void gpad_shutdown(void) {
