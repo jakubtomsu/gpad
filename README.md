@@ -5,24 +5,43 @@ All raw device inputs are mapped to the Xbox controller layout.
 
 
 ## Usage
+In _only one_ C file, define `GPAD_IMPLEMENTATION`. Then you can just `#include "gpad.h"` anywhere else.
 ```c
 #define GPAD_IMPLEMENTATION
 #include "gpad.h"
-
-
 ```
 
+Init and shutdown context:
 ```c
 gpad_initialize();
 
-Gpad_Device_Id devices[GPAD_MAX_DEVICES] = {0};
-if (gpad_list_devices(&devices[0], GPAD_MAX_DEVICES)) {
-  for (int i
-    Gpad_Device_State state = {0};
-    if (gpad_device_state(
+while (true) {
+    // Tick ...
 }
 
 gpad_shutdown();
+```
+
+Iterate all devices and poll their input:
+```c
+for (int i = 0; i < GPAD_MAX_DEVICES; i++) {
+    Gpad_Device_State state = {0};
+    // gpad_device_state will return false if the device on that ID is not connected.
+    if (gpad_device_state(i, &state)) {
+        for(int button = 0; button < Gpad_Button_COUNT; button++) {
+            printf("%s: %s", gpad_button_name(button), gpad_device_button_pressed(&state, button) ? "down" : "up");
+        }
+    }
+}
+```
+
+Or alternatively list all available devices using `gpad_list_devices` helper function.
+```c
+Gpad_Device_Id devices[GPAD_MAX_DEVICES] = {0};
+int device_count = gpad_list_devices(&devices[0], GPAD_MAX_DEVICES);
+for (int i = 0; i < device_count; i++) {
+    // use ID from device[i] ...
+}
 ```
 
 ## Build controller DB
