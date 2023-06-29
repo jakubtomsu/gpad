@@ -1,5 +1,5 @@
 # gpad
-STB-style single header C/C++/Odin library for game controller input.
+Simple C/C++/Odin library for game controller input.
 
 All raw device inputs are mapped to the Xbox controller layout.
 
