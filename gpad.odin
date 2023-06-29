@@ -17,30 +17,30 @@ Device_Id :: distinct u8
 //      Square:     X
 //      Triangle:   Y
 Button :: enum u8 {
-    a              = 0,
-    b              = 1,
-    x              = 2,
-    y              = 3,
-    left_shoulder  = 4,
-    right_shoulder = 5,
-    back           = 6,
-    start          = 7,
-    guide          = 8,
-    left_thumb     = 9,
-    right_thumb    = 10,
-    dpad_up        = 11,
-    dpad_right     = 12,
-    dpad_down      = 13,
-    dpad_left      = 14,
+    A              = 0,
+    B              = 1,
+    X              = 2,
+    Y              = 3,
+    Left_Shoulder  = 4,
+    Right_Shoulder = 5,
+    Back           = 6,
+    Start          = 7,
+    Guide          = 8,
+    Left_Thumb     = 9,
+    Right_Thumb    = 10,
+    Dpad_Up        = 11,
+    Dpad_Right     = 12,
+    Dpad_Down      = 13,
+    Dpad_Left      = 14,
 }
 
 Axis :: enum u8 {
-    left_x        = 0,
-    left_y        = 1,
-    right_x       = 2,
-    right_y       = 3,
-    left_trigger  = 4,
-    right_trigger = 5,
+    Left_X        = 0,
+    Left_Y        = 1,
+    Right_X       = 2,
+    Right_Y       = 3,
+    Left_Trigger  = 4,
+    Right_Trigger = 5,
 }
 
 Device_State :: struct {
