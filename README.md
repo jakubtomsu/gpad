@@ -12,7 +12,7 @@ In _only one_ C file, define `GPAD_IMPLEMENTATION`. Then you can just `#include 
 ```
 
 Init and shutdown context:
-```c
+```cpp
 gpad_initialize();
 
 while (true) {
@@ -23,7 +23,7 @@ gpad_shutdown();
 ```
 
 Iterate all devices and poll their input:
-```c
+```cpp
 for (int i = 0; i < GPAD_MAX_DEVICES; i++) {
     Gpad_Device_State state = {0};
     // gpad_device_state will return false if the device on that ID is not connected.
@@ -36,7 +36,7 @@ for (int i = 0; i < GPAD_MAX_DEVICES; i++) {
 ```
 
 Or alternatively list all available devices using `gpad_list_devices` helper function.
-```c
+```cpp
 Gpad_Device_Id devices[GPAD_MAX_DEVICES] = {0};
 int device_count = gpad_list_devices(&devices[0], GPAD_MAX_DEVICES);
 for (int i = 0; i < device_count; i++) {
