@@ -1,6 +1,14 @@
 # gpad
 Simple C/C++/Odin library for game controller input.
 
+> [!WARNING]
+> This library currently works only on windows, with support for XInput and DirectInput remapped using SDL controller DB. It's also missing support for device connected window messages.
+>
+> I am not planning to add more features. I didn't want to release this lib because it's unfinished, but now since some people asked me about it I decided to make it public anyway. That said any PRs are appreciated.
+> To learn more about this topic I strongly recommend reading [Joystick Input Examples by MysteriousJ](https://github.com/MysteriousJ/Joystick-Input-Examples)
+>
+> Use at your own risk.
+
 All raw device inputs are mapped to the Xbox controller layout.
 
 
