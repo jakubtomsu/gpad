@@ -52,6 +52,14 @@ for (int i = 0; i < device_count; i++) {
 }
 ```
 
+## Examples
+
+The examples are written in odinlang for simplicity, but should be easy enough to understand for a C programmer.
+
+Run with `odin run examples/some_example`.
+
+The `visual` example is a simple raylib app which visualizes all the input states.
+
 ## Build controller DB
 This library uses [SDL Game Controller DB](https://github.com/gabomdq/SDL_GameControllerDB) to map raw joystick inputs to the Xbox controller layout. The `gamecontrollerdb.txt` contains the original data, and `build_db` is a program which  parses it and generates C code to `gpad_gamecontrollerdb.inl`.
 
