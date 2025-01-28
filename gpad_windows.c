@@ -308,7 +308,9 @@ static BOOL CALLBACK gpad__dinput_enum_devices_callback(LPCDIDEVICEINSTANCE devi
         //             elem.axis_offset);
         //     }
         // }
-
+        
+        // exit(0);
+        
         gpad__context.id_entries[id] = entry;
 
         return DIENUM_CONTINUE;
@@ -454,9 +456,9 @@ bool gpad_poll_device(const Gpad_Device_Id id, Gpad_Device_State* out_state) {
                     const LONG axes[Gpad_Axis_COUNT] = {
                         state.lX,  // Gpad_Axis_Left_X
                         state.lY,  // Gpad_Axis_Left_Y
+                        state.lZ,  // Gpad_Axis_Left_Trigger
                         state.lRx, // Gpad_Axis_Right_X
                         state.lRy, // Gpad_Axis_Right_Y
-                        state.lZ,  // Gpad_Axis_Left_Trigger
                         state.lRz, // Gpad_Axis_Right_Trigger
                     };
 
