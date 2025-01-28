@@ -1,8 +1,8 @@
-package gpad_sample
+package gpad_example_simple
 
 import "core:time"
 import "core:fmt"
-import gpad ".."
+import gpad "../.."
 
 main :: proc() {
     gpad.initialize()
